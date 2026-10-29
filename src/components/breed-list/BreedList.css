@@ -1,0 +1,21 @@
+.breed-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+    padding: 20px 0;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--card-bg, #232736);
+    border-radius: 12px;
+    border: 1px dashed var(--border, #353a4d);
+    color: var(--text-dim, #c5cadb);
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.empty-state p {
+    margin: 10px 0;
+}
