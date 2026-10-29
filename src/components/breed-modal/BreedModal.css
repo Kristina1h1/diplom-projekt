@@ -1,0 +1,137 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+    background-color: var(--card-bg, #232736);
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border, #353a4d);
+    animation: slideUp 0.3s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: rgba(255, 0, 0, 0.7);
+}
+
+.modal-image {
+    height: 250px;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px 16px 0 0;
+}
+
+.modal-image .image-placeholder {
+    font-size: 80px;
+    opacity: 0.5;
+}
+
+.modal-info {
+    padding: 24px;
+}
+
+.modal-info h2 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+    color: var(--text, #e4e6eb);
+}
+
+.modal-origin {
+    margin: 0 0 20px 0;
+    color: var(--text-dim, #c5cadb);
+    font-size: 16px;
+}
+
+.modal-grid {
+    margin-bottom: 24px;
+}
+
+.modal-grid div {
+    background-color: var(--bg, #1a1d29);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border, #353a4d);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-grid span {
+    font-size: 12px;
+    color: var(--text-dim, #c5cadb);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.modal-grid strong {
+    font-size: 18px;
+    color: var(--text, #e4e6eb);
+}
+
+.modal-desc h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: var(--accent, #d4b483);
+}
+
+.modal-desc p {
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+    color: var(--text-dim, #c5cadb);
+}
+
+.modal-temperament {
+    background-color: var(--bg, #1a1d29);
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border, #353a4d);
+    color: var(--text, #e4e6eb);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
