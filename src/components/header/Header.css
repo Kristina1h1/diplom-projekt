@@ -1,8 +1,41 @@
 .header {
     background-color: #232736;
-    padding: 30px 20px;
+    padding: 30px 20px 0 20px;
     text-align: center;
     border-bottom: 1px solid #353a4d;
 }
-.header h1 { margin: 0 0 10px 0; font-size: 36px; color: #d4b483; }
-.header p { margin: 0; color: #c5cadb; }
+.header h1 {
+    margin: 0 0 10px 0;
+    font-size: 36px;
+    color: #d4b483; 
+}
+.header p {
+    margin: 0;
+    color: #c5cadb; 
+}
+.header-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header-nav button {
+    background: transparent;
+    border: none;
+    color: #c5cadb;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.header-nav button:hover {
+    color: #e4e6eb;
+}
+
+.header-nav button.active {
+    color: #d4b483;
+    border-bottom-color: #d4b483;
+    font-weight: bold;
+}

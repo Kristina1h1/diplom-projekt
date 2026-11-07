@@ -53,3 +53,15 @@
     border-color: var(--accent, #d4b483);
     font-weight: bold;
 }
+
+
+.favorites-toggle {
+    margin-left: auto;
+}
+
+@media (max-width: 600px) {
+    .favorites-toggle {
+    margin-left: 0;
+    width: 100%;
+    }
+}

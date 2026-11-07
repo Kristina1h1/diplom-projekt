@@ -1,0 +1,115 @@
+.match-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 60px;
+}
+
+.match-card {
+    background-color: var(--card-bg, #232736);
+    border: 1px solid var(--border, #353a4d);
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease-out;
+}
+
+.start-card .match-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.match-card h2 {
+    margin: 0 0 16px 0;
+    color: var(--text, #e4e6eb);
+    font-size: 24px;
+}
+
+.match-card p {
+    color: var(--text-dim, #c5cadb);
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.start-btn, .reset-btn {
+    background-color: var(--accent, #d4b483);
+    color: #1a1d29;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.start-btn:hover, .reset-btn:hover {
+    transform: scale(1.05);
+    background-color: #e6c89a;
+}
+
+.step-indicator {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent, #d4b483);
+    margin-bottom: 10px;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-btn {
+    background-color: var(--bg, #1a1d29);
+    border: 1px solid var(--border, #353a4d);
+    color: var(--text, #e4e6eb);
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+    border-color: var(--accent, #d4b483);
+    background-color: var(--border, #353a4d);
+}
+
+.results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg, #1a1d29);
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border, #353a4d);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.result-item:hover {
+    border-color: var(--accent, #d4b483);
+    transform: translateX(5px);
+}
+
+.result-name {
+    font-weight: bold;
+    color: var(--text, #e4e6eb);
+}
+
+.result-arrow {
+    color: var(--accent, #d4b483);
+    font-size: 20px;
+}

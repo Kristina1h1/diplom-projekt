@@ -1,10 +1,9 @@
 import React from "react";
 import "./Filters.css";
 
-function Filters({ searchTerm, setSearchTerm, selectedSize, setSelectedSize }) {
+function Filters({ searchTerm, setSearchTerm, selectedSize, setSelectedSize, showOnlyFavorites, setShowOnlyFavorites }) {
     return (
         <div className="filters-container">
-            {/* Строка поиска */}
             <div className="search-box">
                 <input
                     type="text"
@@ -23,6 +22,12 @@ function Filters({ searchTerm, setSearchTerm, selectedSize, setSelectedSize }) {
                         {size === "Все" ? "Все" : size.charAt(0).toUpperCase() + size.slice(1)}
                     </button>
                 ))}
+                <button
+                    className={`favorites-toggle ${showOnlyFavorites ? "active" : ""}`}
+                    onClick={() => setShowOnlyFavorites(!showOnlyFavorites)}
+                >
+                    ❤️ Только избранное
+                </button>
             </div>
         </div>
     );

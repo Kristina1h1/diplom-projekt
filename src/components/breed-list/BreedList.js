@@ -2,7 +2,7 @@ import React from "react";
 import BreedCard from "../breed-card/BreedCard";
 import "./BreedList.css";
 
-function BreedList({ breeds, onOpenBreed }) {
+function BreedList({ breeds, onOpenBreed, favorites, onToggleFavorite  }) {
     if (breeds.length === 0) {
         return (
             <div className="empty-state">
@@ -19,6 +19,8 @@ function BreedList({ breeds, onOpenBreed }) {
                     key={breed.id}
                     breed={breed}
                     onOpen={onOpenBreed}
+                    isFavorite={favorites.includes(breed.id)}
+                    onToggleFavorite={onToggleFavorite}
                 />
             ))}
         </div>
