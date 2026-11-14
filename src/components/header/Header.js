@@ -1,12 +1,17 @@
 import React from "react";
 import "./Header.css";
 
-function Header({ currentPage, setPage }) {
+function Header({ currentPage, setPage, theme, toggleTheme }) {
     return (
         <header className="header">
             <div className="header-top">
-                <h1>Котопедия</h1>
-                <p>Твой гид по породам кошек</p>
+                <div>
+                    <h1>Котопедия</h1>
+                    <p>Твой гид по породам кошек</p>
+                </div>
+                <button className="theme-toggle" onClick={toggleTheme} title="Сменить тему">
+                    {theme === "dark" ? "☀️" : "🌙"}
+                </button>
             </div>
             <nav className="header-nav">
                 <button

@@ -22,12 +22,30 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("catTheme");
+    return savedTheme || "dark";
+  });
+
+  useEffect(() => {
+    if (theme === "light") {
+      document.body.classList.add("light");
+    } else {
+      document.body.classList.remove("light");
+    }
+    localStorage.setItem("catTheme", theme);
+  }, [theme]);
   useEffect(() => {
     localStorage.setItem("catFavorites", JSON.stringify(favorites));
   }, [favorites]);
 
+const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   const handleOpenBreed = (breed) => {setSelectedBreed(breed);};
   const handleCloseModal = () => {setSelectedBreed(null);};
+
 
 const handleToggleFavorite = (id) => {
     if (favorites.includes(id)) {
@@ -46,7 +64,11 @@ const filteredBreeds = breeds.filter((breed) => {
   
   return (
     <div className="App">
-      <Header currentPage={currentPage} setPage={setCurrentPage} />
+      <Header currentPage={currentPage} 
+      setPage={setCurrentPage} 
+      theme={theme} 
+      toggleTheme={toggleTheme} 
+      />
       
       <main className="main-content">
         {currentPage === "catalog" ? (
