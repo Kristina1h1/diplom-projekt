@@ -1,31 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@300;400;500;600&display=swap');
+
+:root {
+    --bg: #F5EFE6;
+    --card-bg: #ffffff;
+    --border: #e0d8cc;
+    --text: #1A1A1A;
+    --text-dim: #7a7266;
+    --accent: #C9A27E;
+    
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Manrope', system-ui, sans-serif;
+}
+
+body.dark {
+    --bg: #1A1A1A;
+    --card-bg: #262626;
+    --border: #3a3a3a;
+    --text: #F5EFE6;
+    --text-dim: #a09b93;
+    --accent: #D4B895;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.2;
 }
 
-:root{
-  --bg: #1a1d29;
-  --card-bg: #232736;
-  --border: #353a4d;
-  --text: #e4e6eb;
-  --text-dim: #c5cadb;
-  --accent: #d4b483;
-}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
 
-body.light{
-  --bg: #f4f6fb;
-  --card-bg: #ffffff;
-  --border: #d1d5db;
-  --text: #1a1d29;
-  --text-dim: #4b5563;
-  --accent: #c59b5c;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
 }

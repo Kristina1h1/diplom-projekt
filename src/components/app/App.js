@@ -1,98 +1,54 @@
 import React, { useState, useEffect } from "react";
+import Gallery from "../gallery/Gallery";
 import Header from "../header/Header";
-import Filters from "../filters/Filters";
-import BreedList from "../breed-list/BreedList";
-import BreedModal from "../breed-modal/BreedModal"; 
-import MatchGame from "../match-game/MatchGame";
-import Footer from "../footer/Footer";
-import { breeds } from "../../data/breeds";
+import Hero from "../hero/Hero";
+import About from "../about/About";
+import Cats from "../cats/Cats";
+import CatModal from "../cats/CatModal";
+import { cats } from "../../data/cats";
+import Kittens from "../kittens/Kittens";
+import { kittens } from "../../data/kittens";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import "./App.css";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("catalog");
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem("catTheme") || "light";
+    });
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedSize, setSelectedSize] = useState("Все");
-  const [selectedBreed, setSelectedBreed] = useState(null);
+    const [selectedCat, setSelectedCat] = useState(null);
 
-  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+    useEffect(() => {
+        if (theme === "dark") {
+            document.body.classList.add("dark");
+        } else {
+            document.body.classList.remove("dark");
+        }
+        localStorage.setItem("catTheme", theme);
+    }, [theme]);
 
-  const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem("catFavorites");
-    return saved ? JSON.parse(saved) : [];
-  });
+    const toggleTheme = () => {
+        setTheme(theme === "light" ? "dark" : "light");
+    };
+const handleOpenCat = (cat) => setSelectedCat(cat);
+const handleCloseModal = () => setSelectedCat(null);
 
-  const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem("catTheme");
-    return savedTheme || "dark";
-  });
+    return (
+        <div className="App">
+            <Header theme={theme} toggleTheme={toggleTheme} />
 
-  useEffect(() => {
-    if (theme === "light") {
-      document.body.classList.add("light");
-    } else {
-      document.body.classList.remove("light");
-    }
-    localStorage.setItem("catTheme", theme);
-  }, [theme]);
-  useEffect(() => {
-    localStorage.setItem("catFavorites", JSON.stringify(favorites));
-  }, [favorites]);
-
-const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
-  const handleOpenBreed = (breed) => {setSelectedBreed(breed);};
-  const handleCloseModal = () => {setSelectedBreed(null);};
-
-
-const handleToggleFavorite = (id) => {
-    if (favorites.includes(id)) {
-      setFavorites(favorites.filter((favId) => favId !== id)); // Убираем
-    } else {
-      setFavorites([...favorites, id]); // Добавляем
-    }
-  };
-
-const filteredBreeds = breeds.filter((breed) => {
-    const matchesSearch = breed.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesSize = selectedSize === "Все" || breed.size === selectedSize;
-    const matchesFavorite = !showOnlyFavorites || favorites.includes(breed.id);
-    return matchesSearch && matchesSize && matchesFavorite;
-  });
-  
-  return (
-    <div className="App">
-      <Header currentPage={currentPage} 
-      setPage={setCurrentPage} 
-      theme={theme} 
-      toggleTheme={toggleTheme} 
-      />
-      
-      <main className="main-content">
-        {currentPage === "catalog" ? (
-          <>
-            <h2 className="catalog-title">Каталог пород</h2>
-            <Filters 
-              searchTerm={searchTerm} setSearchTerm={setSearchTerm}
-              selectedSize={selectedSize} setSelectedSize={setSelectedSize}
-              showOnlyFavorites={showOnlyFavorites} setShowOnlyFavorites={setShowOnlyFavorites}
-            />
-            <BreedList breeds={filteredBreeds} onOpenBreed={handleOpenBreed}favorites={favorites}
-              onToggleFavorite={handleToggleFavorite} />
-          </>
-        ) : (
-          <>
-            <h2 className="catalog-title">Подбор породы</h2>
-            <MatchGame breeds={breeds} onOpenBreed={handleOpenBreed} />
-          </>
-        )}
-      </main>
-      <Footer />
-      <BreedModal breed={selectedBreed} onClose={handleCloseModal} />
-    </div>
-  );
+            <main>
+                <Hero />
+                <About />
+                <Cats cats={cats} onOpenCat={handleOpenCat} />
+            </main>
+            <CatModal cat={selectedCat} onClose={handleCloseModal} />
+            <Kittens kittens={kittens} onOpenCat={(kitten) => console.log("Клик по котенку:", kitten.name)} />
+            <Gallery />
+            <ScrollToTop />
+        </div>
+    );
 }
+
 
 export default App;

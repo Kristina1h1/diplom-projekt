@@ -1,0 +1,56 @@
+.about {
+  padding: 100px 0;
+  background-color: var(--card-bg);
+  transition: background-color 0.3s ease;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(30px, 4vw, 48px);
+  margin-bottom: 60px;
+  color: var(--text);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.about-card {
+  background: var(--bg);
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.about-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.about-card h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.about-card p {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .about { padding: 60px 0; }
+}
